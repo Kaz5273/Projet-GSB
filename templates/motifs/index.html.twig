@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Motifs index{% endblock %}
+
+{% block body %}
+    <h1>Motifs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Mot_id</th>
+                <th>Mot_libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for motif in motifs %}
+            <tr>
+                <td>{{ motif.id }}</td>
+                <td>{{ motif.motId }}</td>
+                <td>{{ motif.motLibelle }}</td>
+                <td>
+                    <a href="{{ path('motifs_show', {'id': motif.id}) }}">show</a>
+                    <a href="{{ path('motifs_edit', {'id': motif.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('motifs_new') }}">Create new</a>
+{% endblock %}
